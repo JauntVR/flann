@@ -111,10 +111,11 @@ if (USE_MPI AND HDF5_IS_PARALLEL)
     add_definitions("-DHAVE_MPI")
 endif()
 
-
-find_package(GTest) 
-if (NOT GTEST_FOUND)
-	message(WARNING "gtest library not found, some tests will not be run")
+if (BUILD_TEST)
+    find_package(GTest)
+    if (NOT GTEST_FOUND)
+        message(WARNING "gtest library not found, some tests will not be run")
+    endif()
 endif()
 
 
